@@ -1,40 +1,38 @@
 #include <iostream>
+#include <stdlib.h>
 #include <math.h>
 #include "complex.h"
 
 using namespace std;
 
-Complex y(Complex);
+Complex y(Complex z);
 
-int main()
-{
-	Complex ex1(10, -5);
-	Complex ex2 = 3;
-	Complex ex3;
+int main() {
+	Complex a(5, PI / 3);
+	Complex b = 1;
+	Complex c;
 
-	cout << "ex1 = " << ex1 << endl;
-	cout << "ex2 = " << ex2 << endl;
-	cout << "ex3 = " << ex3 << endl;
+	cout << "a = " << a << endl;
+	cout << "b = " << b << endl;
+	cout << "c = " << c << endl;
 	cout << endl;
 
-	ex3 = ex1 + ex2;
-	ex1 /= ex3;
-	ex2 *= ex3;
+	c = a + b;
+	cout << "a+b = " << c << endl;
+	c = a * b;
+	cout << "a*b = " << c << endl;
+	c = a / b;
+	cout << "a/b = " << c << endl;
 
-	cout << "ex3 = ex1 + ex2 = " << ex3 << endl;
-	cout << "ex1 = ex1 / ex3 = " << ex1 << endl;
-	cout << "ex2 = ex2 * ex3 = " << ex2 << endl;
-	cout << endl;
-
-	cout << "enter re and im" << endl;
-	cin >> ex3;
-	cout << "ex3 = " << ex3 << endl;
-
+	cout << "enter r and phi" << endl;
+	cin >> c;
+	cout << "c = " << c << endl;
+	c = y(c);
+	cout << "y(c) = i-c*sin(2c) = " << c << endl;
+	
 	system("pause");
 }
 
-Complex y(Complex z)
-{
-	Complex i(1, 3.14);
-	return i;// -z*sin(Complex(2) * z);
+Complex y(Complex z) {
+	return Complex(1, PI / 2) - z*sin(Complex(2, 0)*z);
 }
